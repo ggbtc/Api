@@ -4,7 +4,7 @@
 
 ## 1.1 / 私有接口签名流程
 
-###加密方式
+### 加密方式
 用户登陆从服务端获取到的的token={key:apikey,value:secret}
 
  - apikey=K28f43a180373d7e
