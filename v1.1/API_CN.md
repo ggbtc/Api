@@ -1,14 +1,19 @@
 # **API文档**
 
-## **2018-10-11**
+## **2019-4-12**
 
 ## 1.1 / 私有接口签名流程
 
 ### 加密方式
-用户登陆从服务端获取到的的token={key:apikey,value:secret}
+用户登陆从服务端获取到的的token={key:apikey, value:secret}，如
 
  - apikey=K28f43a180373d7e
  - secret=Ve70aee66b8a3e2bf
+
+1、URL请求字符串：请求方法URL?参数名1=参数值1&参数名2=参数值2&key=apikey&nonce=随机数
+2、字符串加入secret得到：请求方法URL?参数名1=参数值1&参数名2=参数值2&key=apikey&nonce=随机数secret
+3、对字符串进行sha512加密，得到sign
+4、URL请求字符串前添加请求API服务器URL，末尾追加请求参数sign
 
 在线加密工具: http://tool.oschina.net/encrypt?type=2
 
@@ -79,10 +84,13 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
 
 - #### 返回值
 
-  | 字段名称 | 数据类型 |
-  | -------- | -------- |
-  | message  | string   |
-  | result   | string   |
+  | 字段名称 |  描述       | 数据类型 |
+  | -------- | --------   | -------- |
+  | User     | 用户名      | string   |
+  | Key      | 接入apikey  | string   |
+  | Value    | 接入secret  | string   |
+  | PayPwdCheck | 支付密码校验  | int   |
+  | LongToken | 长期token  | bool   | 
 
 ```
     {
@@ -97,6 +105,7 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
      	        } 
     }
 ```
+
 2.1 / 获取用户信息
 ------------------
 
@@ -304,7 +313,7 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
   | chg      | 增加或减少的比例 | string    |
   | high     | 24小时最高价     | string    |
   | low      | 24小时最低价     | string  |
-  | name     | 币种             | string  |
+  | name     | 交易对             | string  |
   | id       | 排序             | string     |
   | last     | 上一次成交价格    | string  |
   | turn     | 24小时成交额(既-后面的币种的成交数量) | string  |
@@ -550,12 +559,12 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
   | pair        | 交易对      | string  |
   | tradetype   | 买卖类型    | string  |
   | orderprice  | 下单价格    | float64  |
-  | orderamount | 下单数量-int-后六位为小数点        | int  |
+  | orderamount | 下单数量        | float64  |
   | time        | 下单时间        | int64  |
   | ismarket    | 是否市场    | bool  |
   | feescale    | 手续费比例   | float64  |
-  | remainamount| 未成交剩余数量-int-同上        | int  |
-  | feeamount   | 手续费数量        | int  |
+  | remainamount| 未成交剩余数量   | float64  |
+  | feeamount   | 手续费数量        | float64  |
   | fillamount  | 当为卖单: 这里代表用户卖掉eth,获取usdt的数量/当为买单 : 这里代表用户未使用eth的数量        | float64  |
   | avgprice    | 成交平均价格        | float64  |
   | state       | 订单状态(open\closed\canceled)        | string  |
@@ -612,12 +621,12 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
   | pair        | 交易对      | string  |
   | tradetype   | 买卖类型    | string  |
   | orderprice  | 下单价格    | float64  |
-  | orderamount | 下单数量-int-后六位为小数点        | int  |
+  | orderamount | 下单数量       | float64  |
   | time        | 下单时间        | int64  |
   | ismarket    | 是否市场    | bool  |
   | feescale    | 手续费比例   | float64  |
-  | remainamount| 未成交剩余数量-int-同上        | int  |
-  | feeamount   | 手续费数量        | int  |
+  | remainamount| 未成交剩余数量        | float64  |
+  | feeamount   | 手续费数量        | float64  |
   | fillamount  | 当为卖单: 这里代表用户卖掉eth,获取usdt的数量/当为买单 : 这里代表用户未使用eth的数量        | float64  |
   | avgprice    | 成交平均价格        | float64  |
   | state       | 订单状态(open\closed\canceled)        | string  |
@@ -687,7 +696,7 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
   | -------  | --------   | --------  |
   | P        | 价格      | float64    |
   | A        | 数量      | float64  |
-  | T        | 时间      | int64  |
+  | T        | 时间      | string  |
 
 ```
     {
