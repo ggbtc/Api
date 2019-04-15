@@ -205,7 +205,7 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
      	  "message":	"success", 			
      	  "result":		{
                             Address: "0x245405d2e4989e530fec39063854cffc3e9a1d14",
-                            Currency: "eos",
+                            Currency: "eth",
                             User: "18812341234"
                         } 
     }
