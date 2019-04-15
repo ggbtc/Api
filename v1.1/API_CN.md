@@ -5,14 +5,17 @@
 ## 1.1 / 私有接口签名流程
 
 ### 加密方式
-用户登陆从服务端获取到的的token={key:apikey, value:secret}，如
+用户登陆从服务端获取到的的token={key:apikey, value:secretkey}，如
 
  - apikey=K28f43a180373d7e
- - secret=Ve70aee66b8a3e2bf
+ - secretkey=Ve70aee66b8a3e2bf
 
 1、URL请求字符串：请求方法URL?参数名1=参数值1&参数名2=参数值2&key=apikey&nonce=随机数
-2、字符串加入secret得到：请求方法URL?参数名1=参数值1&参数名2=参数值2&key=apikey&nonce=随机数secret
+
+2、字符串加入secretkey得到：请求方法URL?参数名1=参数值1&参数名2=参数值2&key=apikey&nonce=随机数secretkey
+
 3、对字符串进行sha512加密，得到sign
+
 4、URL请求字符串前添加请求API服务器URL，末尾追加请求参数sign
 
 在线加密工具: http://tool.oschina.net/encrypt?type=2
@@ -38,7 +41,7 @@
 /user/logined/getNewAddress?key=K28f43a180373d7e&nonce=12343536&currency=eth
 ```
 
-上面的字符串后面加上secret
+上面的字符串后面加上secretkey
 
 ```
 /user/logined/getNewAddress?key=K28f43a180373d7e&nonce=12343536&currency=ethVe70aee66b8a3e2bf
@@ -337,7 +340,8 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
             }
     }
 ```
-  当pair为all时,返回	map\[string\]jsonStr
+
+当pair为all时,返回	map\[string\]jsonStr
 
 ```
     {
@@ -345,10 +349,25 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
         "result":   {
             "ankr-btc":
                 {
-                    "chg":"0","high":"0.00000309","last":"0.00000203","low":"0.00000189","name":"ankr-btc","turn":"1.735185602580714","vol":"712810.62287742"
+                    "chg":"0",
+                    "high":"0.00000309",
+                    "last":"0.00000203",
+                    "low":"0.00000189",
+                    "name":"ankr-btc",
+                    "turn":"1.735185602580714",
+                    "vol":"712810.62287742"
                 },
             "apk-usdt":
-                {"chg":"0.00003413910824501265","closed":"true","high":"0.055","id":"131","last":"0.02899999","low":"0.0273","name":"apk-usdt","turn":"19590.240049685468","vol":"667533.286858"
+                {
+                    "chg":"0.00003413910824501265",
+                    "closed":"true",
+                    "high":"0.055",
+                    "id":"131",
+                    "last":"0.02899999",
+                    "low":"0.0273",
+                    "name":"apk-usdt",
+                    "turn":"19590.240049685468",
+                    "vol":"667533.286858"
                 },
             }
     }
@@ -378,7 +397,6 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
   | Buy      | 买单        | array    |
 
 ```
-
     {
         "message":  "success",
         "result":   {
@@ -427,7 +445,7 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
 
 - #### 参数列表	
 
-  | 字段名称 | 描述            | 数据类型             |
+  | 字段名称 | 描述            | 备注             |
   | -------- | -------------- | -------------------- |
   | pair     | 交易对（必填）  |eth-usdt            |
   | basis    | 单位（必填）    | hour,minute,day,week |
@@ -736,7 +754,10 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
   | pair      | 交易对(必填)                         | "eth-usdt"       |
   | limit     | 返回交易条数（选填）                   | 0-1000 999       |
   | time      | 返回此时间之前的流水(unix微秒)（选填） | 1544061142176525 |
-  | tradeType | 用户挂单类型（选填）                   | sell \| buy      |
+  | tradeType | 用户挂单类型（选填）                   | sell / buy      |
+  | key       | apikey                | "K28f43a180373d7e" |
+  | nonce     | 随机数                | 123456             | 
+  | sign      | 签名                  | 签名串              | 
 
 - #### 返回值
 
@@ -790,8 +811,7 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
 
 -   注:
 
-1.
-字段里的Tp和提交的tradeType无关,仅代表实际交易成功的交易方向,并不代表是用户挂单的方向,例:
+1.字段里的Tp和提交的tradeType无关,仅代表实际交易成功的交易方向,并不代表是用户挂单的方向,例:
 自己挂了一单买单,之后自己又挂了一单卖单成交了自己的买单,那么成交方向为sell
 
 2\. 当提交tradeType参数后,仅返回用户做为(买/卖单)的流水, 举例 :
