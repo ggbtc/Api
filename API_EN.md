@@ -26,12 +26,12 @@ url: https://private.ggbtc.com:55558/user/logined/getNewAddress
 
 - #### Parameters  list:
 
-| FieldName | Description      |
-| --------- | ---------------- |
-| key       | apikey           |
-| nonce     | 12343546         |
-| currency  | eth              |
-| sign      | encrypted string |
+| FieldName | Description            |
+| --------- | ---------------------- |
+| key       | apikey                 |
+| nonce     | unixTime（millisecond) |
+| currency  | eth                    |
+| sign      | encrypted string       |
 
 - #### Signature process 
 
@@ -82,11 +82,11 @@ http://apiserver/user/logined/getNewAddress?key=K28f43a180373d7e&nonce=12343536&
 
 - #### Parameters  list: 
 
-  | FieldName | Description      |
-  | --------- | ---------------- |
-  | key       | apikey           |
-  | nonce     | timestamp        |
-  | sign      | encrypted string |
+  | FieldName | Description            |
+  | --------- | ---------------------- |
+  | key       | apikey                 |
+  | nonce     | unixTime（millisecond) |
+  | sign      | encrypted string       |
 
 - #### Return value:
 
@@ -119,11 +119,11 @@ http://apiserver/user/logined/getNewAddress?key=K28f43a180373d7e&nonce=12343536&
 
 - #### Parameters  list: 
 
-  | FieldName | Description      |
-  | --------- | ---------------- |
-  | key       | apikey           |
-  | nonce     | timestamp        |
-  | sign      | encrypted string |
+  | FieldName | Description            |
+  | --------- | ---------------------- |
+  | key       | apikey                 |
+  | nonce     | unixTime（millisecond) |
+  | sign      | encrypted string       |
 
 - #### Return value:
 
@@ -188,12 +188,12 @@ http://apiserver/user/logined/getNewAddress?key=K28f43a180373d7e&nonce=12343536&
 
 - #### Parameters list	
 
-| FieldName | Description      | Remark             |
-| --------- | ---------------- | ------------------ |
-| currency  | currency         | "eth"              |
-| key       | apikey           | "K28f43a180373d7e" |
-| nonce     | timestamp        | "1542020339856"    |
-| sign      | encrypted string | encrypted string   |
+| FieldName | Description            | Remark             |
+| --------- | ---------------------- | ------------------ |
+| currency  | currency               | "eth"              |
+| key       | apikey                 | "K28f43a180373d7e" |
+| nonce     | unixTime（millisecond) | "1542020339856"    |
+| sign      | encrypted string       | encrypted string   |
 
 - #### Return value
 
@@ -221,11 +221,11 @@ http://apiserver/user/logined/getNewAddress?key=K28f43a180373d7e&nonce=12343536&
 
 - #### Parameters list 
 
-| FieldName | Description      | Remark             |
-| --------- | ---------------- | ------------------ |
-| key       | apikey           | "K28f43a180373d7e" |
-| nonce     | timestamp        | "1542020339856"    |
-| sign      | encrypted string | encrypted string   |
+| FieldName | Description            | Remark             |
+| --------- | ---------------------- | ------------------ |
+| key       | apikey                 | "K28f43a180373d7e" |
+| nonce     | unixTime（millisecond) | "1542020339856"    |
+| sign      | encrypted string       | encrypted string   |
 
 - #### Return value
 
@@ -503,7 +503,7 @@ http://apiserver/user/logined/getNewAddress?key=K28f43a180373d7e&nonce=12343536&
 | amount    | order quantity    | 10                 |
 | tradeType | trade type        | "sell"             |
 | key       | apikey            | "K28f43a180373d7e" |
-| nonce     | timestamp         | 1542020339856      |
+| nonce     | unixTime          | 1542020339856      |
 | sign      | encrypted string  | encrypted string   |
 
 - #### Return value
@@ -524,13 +524,13 @@ http://apiserver/user/logined/getNewAddress?key=K28f43a180373d7e&nonce=12343536&
 
 - #### Parameters list
 
-  | FieldName | Description       | Remark             |
-  | --------- | ----------------- | ------------------ |
-  | pair      | a pair of trading | "eth-usdt"         |
-  | id        | orderID           | 612342             |
-  | key       | apikey            | "K28f43a180373d7e" |
-  | nonce     | timestamp         | 1542020339856      |
-  | sign      | encrypted string  | encrypted string   |
+  | FieldName | Description            | Remark             |
+  | --------- | ---------------------- | ------------------ |
+  | pair      | a pair of trading      | "eth-usdt"         |
+  | id        | orderID                | 612342             |
+  | key       | apikey                 | "K28f43a180373d7e" |
+  | nonce     | unixTime（millisecond) | 1542020339856      |
+  | sign      | encrypted string       | encrypted string   |
 
 - #### Return value
 
@@ -556,13 +556,13 @@ asynchronous  processing  ,so be sure to return  success
 
 - #### Parameters list	
 
-| FieldName | Description       | Remark             |
-| --------- | ----------------- | ------------------ |
-| pair      | a pair of trading | "eth-usdt"         |
-| id        | orderID           | 612342             |
-| key       | apikey            | "K28f43a180373d7e" |
-| nonce     | timestamp         | 1542020339856      |
-| sign      | encrypted string  | encrypted string   |
+| FieldName | Description            | Remark             |
+| --------- | ---------------------- | ------------------ |
+| pair      | a pair of trading      | "eth-usdt"         |
+| id        | orderID                | 612342             |
+| key       | apikey                 | "K28f43a180373d7e" |
+| nonce     | unixTime（millisecond) | 1542020339856      |
+| sign      | encrypted string       | encrypted string   |
 
 - #### Return value
   | FieldName                                                                                                                                                               | Description                                                              | DataType |
@@ -622,7 +622,7 @@ asynchronous  processing  ,so be sure to return  success
 | tradeType | Check the buy order or sell order (optional) | sell,buy              |
 | state     | query order state(optional)                  | open,closed,canceled  |
 | key       | apikey                                       | "K28f43a180373d7e"    |
-| nonce     | timestamp                                    | 1542020339856         |
+| nonce     | unixTime（millisecond)                       | 1542020339856         |
 | sign      | encrypted string                             | encrypted string      |
 
 - #### Return value
@@ -693,20 +693,20 @@ asynchronous  processing  ,so be sure to return  success
 
 - #### Parameters  list
 
-  | FieldName | Description       | Remark             |
-  | --------- | ----------------- | ------------------ |
-  | pair      | a pair of trading | "eth-usdt"         |
-  | id        | user pending id   | 60006              |
-  | key       | apikey            | "K28f43a180373d7e" |
-  | nonce     | timestamp         | 1542020339856      |
-  | sign      | encrypted string  | encrypted string   |
+  | FieldName | Description            | Remark             |
+  | --------- | ---------------------- | ------------------ |
+  | pair      | a pair of trading      | "eth-usdt"         |
+  | id        | user pending id        | 60006              |
+  | key       | apikey                 | "K28f43a180373d7e" |
+  | nonce     | unixTime（millisecond) | 1542020339856      |
+  | sign      | encrypted string       | encrypted string   |
 
 - #### Return value
- | FieldName | Description | DataType |
- | --------- | ----------- | -------- |
- | P         | price       | float64  |
- | A         | amount      | float64  |
- | T         | time        | string   |
+| FieldName | Description | DataType |
+| --------- | ----------- | -------- |
+| P         | price       | float64  |
+| A         | amount      | float64  |
+| T         | time        | string   |
 
 ```
     {
@@ -746,7 +746,7 @@ asynchronous  processing  ,so be sure to return  success
   | time      | returns the flow before this time (unix microsecond) | 1544061142176525   |
   | tradeType | user trade type                                      | sell / buy         |
   | key       | apikey                                               | "K28f43a180373d7e" |
-  | nonce     | timestamp                                            | 1542020339856      |
+  | nonce     | unixTime（millisecond)                               | 1542020339856      |
   | sign      | encrypted string                                     | encrypted string   |
 
 - #### Return value

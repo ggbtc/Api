@@ -20,7 +20,7 @@
 
 在线加密工具: http://tool.oschina.net/encrypt?type=2
 
-#### **实例 : 获取用户充值地址** 
+#### **实例 : 获取用户充值地址**
 
 地址: https://private.ggbtc.com:55558/user/logined/getNewAddress
 
@@ -29,7 +29,7 @@
 | 字段名称 | 描述           |
 | -------- | -------------- |
 | key      | apikey         |
-| nonce    | 12343546       |
+| nonce    | 时间戳（毫秒） |
 | currency | eth            |
 | sign     | 字符加密后的串  |
 
@@ -77,12 +77,12 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
 
 - #### URL: /user/logined/getLongToken		 **需签名**
 
-- #### 参数列表 
+- #### 参数列表
 
 | 字段名称 | 描述           |
 | -------- | -------------- |
 | key      | apikey         |
-| nonce    | 12343546       |
+| nonce    | 时间戳（毫秒） |
 | sign     | 签名           |
 
 - #### 返回值
@@ -93,19 +93,19 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
   | Key      | 接入apikey  | string   |
   | Value    | 接入secret  | string   |
   | PayPwdCheck | 支付密码校验  | int   |
-  | LongToken | 长期token  | bool   | 
+  | LongToken | 长期token  | bool   |
 
 ```
     {
-     	  "message":	"success", 			
-     	  "result":		
+     	  "message":	"success",
+     	  "result":
      	        {
      	            "User":"18812341234",
      	            "Key":"L-376e79ac9a079",
      	            "Value":"V9ac62499374c0143",
      	            "PayPwdCheck":0,
      	            "LongToken":true
-     	        } 
+     	        }
     }
 ```
 
@@ -114,12 +114,12 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
 
 - #### URL: /user/logined/getInfo			 **需签名**
 
-- #### 参数列表 
+- #### 参数列表
 
 | 字段名称 | 描述           |
 | -------- | -------------- |
 | key      | apikey         |
-| nonce    | 12343546       |
+| nonce    | 时间戳（毫秒） |
 | sign     | 签名           |
 
 - #### 返回值
@@ -140,8 +140,8 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
 
 ```
     {
-     	  "message":	"success", 			
-     	  "result":		
+     	  "message":	"success",
+     	  "result":
                 {
                     "User":"18812341234",
                     "NickName":"",
@@ -174,7 +174,7 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
                     "PayPwd":"false",
                     "FeeScale":{},
                     "Oauth":{}
-                } 
+                }
     }
 ```
 
@@ -183,13 +183,13 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
 
 - #### URL: /user/logined/getNewAddress **需签名**
 
-- #### 参数列表	
+- #### 参数列表
 
   | 字段名称 | 描述 | 备注  |
   | -------- | ---- | ----- |
   | currency | 币种 | "eth" |
   | key      | apikey|"K28f43a180373d7e"|
-  | nonce    | 随机数 |12343546    |
+  | nonce    | 时间戳（毫秒） |1542020339856    |
   | sign     | 签名   |签名     |
 
 - #### 返回值
@@ -202,12 +202,12 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
 
 ```
     {
-     	  "message":	"success", 			
+     	  "message":	"success",
      	  "result":		{
                             Address: "0x245405d2e4989e530fec39063854cffc3e9a1d14",
                             Currency: "eth",
                             User: "18812341234"
-                        } 
+                        }
     }
 ```
 2.3 / 获取用户余额
@@ -215,12 +215,12 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
 
 - #### URL: /user/logined/getBalance **需签名**
 
-- #### 参数列表 
+- #### 参数列表
 
   | 字段名称 | 描述    |
   | -------- | ----   |
   | key      | apikey |
-  | nonce    | 随机数  |
+  | nonce    | 时间戳（毫秒） |
   | sign     | 签名    |
 
 - #### 返回值
@@ -228,7 +228,7 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
 ​                        ~~Balance            用户余额              HashMap~~
 ```
     {
-     	  "message":	"success", 			
+     	  "message":	"success",
      	  "result":		{
                 "eth":				1000000,				//eth可用余额
                 "eth-trade":		10111, 					//eth锁定余额
@@ -253,13 +253,13 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
 
 - #### URL: /trade/public/getTradeHistory
 
-- #### 参数列表	
+- #### 参数列表
 
 
- | 字段名称 | 描述       | 备注     |
- | -------- | ----------| -------- |
- | pair     | 交易对     | eth-usdt |
- | limit    | 条数(可选) | 100      |
+| 字段名称 | 描述       | 备注     |
+| -------- | ----------| -------- |
+| pair     | 交易对     | eth-usdt |
+| limit    | 条数(可选) | 100      |
 
 - #### 返回值
 
@@ -271,16 +271,16 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
   | Tp       | 买卖类型 | string  |
   | B        | 买单ID | string  |
   | S        | 卖单ID | string  |
-  
+
 ```
     {
         "message":  "success",
         "result":   [
             {
-                "P":144.86615943060704,             
-                "A":36.5,                           
-                "T":"1554879426166901",            
-                "Tp":"buy"                          
+                "P":144.86615943060704,
+                "A":36.5,
+                "T":"1554879426166901",
+                "Tp":"buy"
             },
             {
                 "P":144.86615943060704,
@@ -293,7 +293,7 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
                 A: 31,
                 T: "1554879376508447",
                 Tp: "sell"
-            },            
+            },
         ]
     }
 ```
@@ -303,7 +303,7 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
 
 - #### URL: /trade/public/getTicker
 
-- #### 参数列表	
+- #### 参数列表
 
   | 字段名称 | 描述   | 备注     |
   | -------- | ------ | -------- |
@@ -327,7 +327,7 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
 ```
     {
         "message":  "success",
-        "result":   
+        "result":
             {
                 "chg":"0.0027244870418008382",
                 "high":"170.96678350000002",
@@ -443,7 +443,7 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
 
 - #### URL: /trade/public/getKline
 
-- #### 参数列表	
+- #### 参数列表
 
   | 字段名称 | 描述            | 备注             |
   | -------- | -------------- | -------------------- |
@@ -467,7 +467,7 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
 ```
     {
         "message":      "success",
-        "result":       
+        "result":
             [
                 {
                     "T":1555038000,
@@ -496,7 +496,7 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
 
 - #### URL: /trade/logined/orderCreate **需签名**
 
-- #### 参数列表	
+- #### 参数列表
 
   | 字段名称  | 描述      | 备注               |
   | --------- | -------- | ---------------    |
@@ -505,8 +505,8 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
   | amount    | 下单数量 | 10                 |
   | tradeType | 交易类型 | "sell"             |
   | key       | apikey   | "K28f43a180373d7e" |
-  | nonce     | 随机数    | 123456             | 
-  | sign      | 签名     | 签名串              | 
+  | nonce     | 时间戳(毫秒)    | 1558679956942             |
+  | sign      | 签名     | 签名串              |
 
 - #### 返回值
 
@@ -531,8 +531,8 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
   | pair     | 交易对 | "eth-usdt" |
   | id       | 订单号 | 612342     |
   | key       | apikey   | "K28f43a180373d7e" |
-  | nonce     | 随机数    | 123456             | 
-  | sign      | 签名     | 签名串              | 
+  | nonce     | 时间戳（毫秒） | 1542020339856 |
+  | sign      | 签名     | 签名串              |
 
 - #### 返回值
 
@@ -542,14 +542,14 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
 
 ```
     {
-        "message":      "success",      
-        "result":       
+        "message":      "success",
+        "result":
     }
 ```
 ```
     {
-        "message":      "cancelFailed",    
-        "result":       
+        "message":      "cancelFailed",
+        "result":
     }
 ```
 
@@ -558,15 +558,15 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
 
 - #### URL: /trade/logined/orderGet 		**需签名**
 
-- #### 参数列表	
+- #### 参数列表
 
   | 字段名称 | 描述   | 备注       |
   | -------- | ------ | ---------- |
   | pair     | 交易对 | "eth-usdt" |
   | id       | 订单号 | 6027829     |
   | key       | apikey   | "K28f43a180373d7e" |
-  | nonce     | 随机数    | 123456             | 
-  | sign      | 签名     | 签名串              | 
+  | nonce     | 时间戳（毫秒） | 1542020339856 |
+  | sign      | 签名     | 签名串              |
 
 - #### 返回值
 
@@ -588,10 +588,10 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
   | state       | 订单状态(open\closed\canceled)        | string  |
   | lastupdate  | 最后一次更新时间        | string  |
 
-```  
+```
     {
         "message":      "success",
-        "result":       
+        "result":
             {
                 "user":"18812341234",
                 "id":6027829,
@@ -617,7 +617,7 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
 
 - #### URL: /trade/logined/orderGetUser		 **需签名**
 
-- #### 参数列表	
+- #### 参数列表
 
   | 字段名称  | 描述                   | 备注                 |
   | --------- | ---------------------- | -------------------- |
@@ -627,8 +627,8 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
   | tradeType | 查询买单还是卖单(可选) | sell,buy             |
   | state     | 查询订单状态(可选)     | open,closed,canceled |
   | key       | apikey                | "K28f43a180373d7e" |
-  | nonce     | 随机数                | 123456             | 
-  | sign      | 签名                  | 签名串              | 
+  | nonce     | 时间戳（毫秒）         | 1542020339856 |
+  | sign      | 签名                  | 签名串              |
 
 - #### 返回值
 
@@ -705,8 +705,8 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
   | pair     | 交易对         | "eth-usdt" |
   | id       | 用户挂单	id | 60006      |
   | key       | apikey                | "K28f43a180373d7e" |
-  | nonce     | 随机数                | 123456             | 
-  | sign      | 签名                  | 签名串              | 
+  | nonce     | 时间戳（毫秒）            | 1542020339856 |
+  | sign      | 签名                  | 签名串              |
 
 - #### 返回值
 
@@ -719,7 +719,7 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
 ```
     {
         "message":  "success",
-        "result":   
+        "result":
             [
                 {
                     "P":185.95,
@@ -756,8 +756,8 @@ https://private.ggbtc.com:55558/user/logined/getNewAddress?key=K28f43a180373d7e&
   | time      | 返回此时间之前的流水(unix微秒)（选填） | 1544061142176525 |
   | tradeType | 用户挂单类型（选填）                   | sell / buy      |
   | key       | apikey                | "K28f43a180373d7e" |
-  | nonce     | 随机数                | 123456             | 
-  | sign      | 签名                  | 签名串              | 
+  | nonce     | 时间戳（毫秒）            | 1542020339856 |
+  | sign      | 签名                  | 签名串              |
 
 - #### 返回值
 
@@ -844,4 +844,3 @@ T=15xxxxxxxxxx P=200 A=10 S=123 B=124 Tp=buy ID=873213214cfds3
 
 如上: 在自交易时,返回值完全相同 .
 通过提交不同的tradeType可以获得重复的流水
-
